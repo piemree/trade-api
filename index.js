@@ -3,15 +3,17 @@ const app = express();
 const helmet = require("helmet");
 const { port } = require("./config");
 
-const routes = require("./routes");
+// const routes = require("./routes");
 
 // app.use(helmet());
-app.use(express.json());
-app.use("/api", routes);
+// app.use(express.json());
+// app.use("/api", routes);
+
+
 app.get("/", (req, res) => {
-  res.send("Hello World");
-});
+    res.send("Hello World");
+  });
 
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
-});
+})
