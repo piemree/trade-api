@@ -2,7 +2,7 @@ const { account, balances } = require("./controllers");
 
 const router = require("express").Router();
 
-router.get("/account", account);
-router.get("/balances", balances);
+router.post("/account", account);
+router.post("/balances", balances);
 
 module.exports = router;

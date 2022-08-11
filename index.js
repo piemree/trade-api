@@ -1,26 +1,18 @@
-// const express = require("express");
-// const app = express();
-// const helmet = require("helmet");
-// const { port } = require("./config");
-
-// const routes = require("./routes");
-
-// app.use(helmet());
-// app.use(express.json());
-// app.use("/api", routes);
-
-// module.export = app;
-
-const app = require("express")();
+const express = require("express");
+const app = express();
+require("dotenv").config();
+const { port } = require("./config");
+const auth = require("./middleware/auth");
 const routes = require("./routes");
 
-const PORT = process.env.PORT || 5000;
+app.use(express.json());
 
-app.use("/api", routes);
-app.get("/", (req, res) => {
-  res.send("Hello World");
+app.use("/api", auth, routes);
+
+app.get("*", (req, res) => {
+  res.send("Not Found");
 });
 
-app.listen(PORT, () => {
-  console.log(`Server started on port ${PORT}`);
+app.listen(port, () => {
+  console.log(`Server started on port ${port}`);
 });

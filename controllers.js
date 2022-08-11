@@ -1,7 +1,7 @@
-const client = require("./client");
-const helpers = require("./helpers");
+const { createClient } = require("./helpers");
 
 async function account(req, res) {
+  const client = createClient(req);
   try {
     const account = await client.account();
     res.json(account);
@@ -11,6 +11,7 @@ async function account(req, res) {
   }
 }
 async function balances(req, res) {
+  const client = createClient(req);
   try {
     const balance = await client.fetchBalance();
     res.json(balance);
