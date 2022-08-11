@@ -12,16 +12,15 @@
 // module.export = app;
 
 const app = require("express")();
+const routes = require("./routes");
 
 const PORT = process.env.PORT || 5000;
 
-app.get("/api", (req, res) => {
-  res.send("Hello World");
-});
+app.use("/api", routes);
 app.get("/", (req, res) => {
   res.send("Hello World");
 });
 
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
-})
+});
