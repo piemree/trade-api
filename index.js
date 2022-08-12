@@ -12,7 +12,7 @@ app.use("/api", auth, routes);
 app.get("*", (req, res) => {
   res.send("Not Found");
 });
-
+//test
 app.listen(port, () => {
   console.log(`Server started on port ${port}`);
 });
